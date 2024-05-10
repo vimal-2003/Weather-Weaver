@@ -44,13 +44,10 @@
         try {
             const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
             const data = await response.json();
-            
-
             document.querySelector(".city").textContent = data.name;
             document.querySelector(".temp").textContent = Math.round(data.main.temp) + "°C";
             document.querySelector(".humidity").textContent = data.main.humidity + "%";
             document.querySelector(".Wind").textContent = data.wind.speed + " km/h";
-
             switch (data.weather[0].main.toLowerCase()) {
                 case "clouds":
                     weatherIcon.src = "images/clouds.png";
@@ -76,7 +73,6 @@
             alert("Couldn't fetch weather data. Please try again later.");
         }
     }
-
     function searchWeather() {
         const city = searchBox.value.trim();
         if (city) {
@@ -86,7 +82,6 @@
             alert("Please enter a city name.");
         }
     }
-    
     searchBtn.addEventListener("click", searchWeather);
     searchBox.addEventListener("keypress", function (e) {
         if (e.key === "Enter") {
